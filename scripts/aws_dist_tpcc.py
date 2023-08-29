@@ -38,7 +38,7 @@ def print_tpcc():
     for i in range(REPEAT):
       cmd = get_cmd_string(machine_id, ips, port + i)
       print(f'./bench_tpcc --logtostderr=1 --id={machine_id} --servers="{cmd}" --protocol=Aria --partition_num={partition_num} --threads={threads} --batch_size={batch_size} --query={query} --neworder_dist={cross_ratio} --payment_dist={cross_ratio}')
-
+#ip地址加端口 分区数（tpcc中，等于仓库数） 一批执行的事务数
   # S2PL
   for cross_ratio in cross_ratios:
     for i in range(REPEAT):

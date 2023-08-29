@@ -36,7 +36,7 @@ public:
 
   virtual ~NewOrder() override = default;
 
-  TransactionResult execute(std::size_t worker_id) override {
+  TransactionResult execute(std::size_t worker_id) override {//执行逻辑
 
     int32_t W_ID = this->partition_id + 1;
 

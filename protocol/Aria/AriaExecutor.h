@@ -71,13 +71,13 @@ public:
 
   ~AriaExecutor() = default;
 
-  void start() override {
+  void start() override {//start函数，线程工作
 
     LOG(INFO) << "AriaExecutor " << id << " started. ";
 
     for (;;) {
 
-      ExecutorStatus status;
+      ExecutorStatus status;//1
       do {
         status = static_cast<ExecutorStatus>(worker_status.load());
 
@@ -88,7 +88,8 @@ public:
       } while (status != ExecutorStatus::Aria_READ);
 
       n_started_workers.fetch_add(1);
-      read_snapshot();
+      read_snapshot();//2 准备工作
+      //执行部分
       n_complete_workers.fetch_add(1);
       // wait to Aria_READ
       while (static_cast<ExecutorStatus>(worker_status.load()) ==
@@ -136,7 +137,7 @@ public:
     auto cur_epoch = epoch.load();
     auto n_abort = total_abort.load();
     std::size_t count = 0;
-    for (auto i = id; i < transactions.size(); i += context.worker_num) {
+    for (auto i = id; i < transactions.size(); i += context.worker_num) {//自己节点的活干完
 
       process_request();
 
@@ -161,7 +162,7 @@ public:
       count++;
 
       // run transactions
-      auto result = transactions[i]->execute(id);
+      auto result = transactions[i]->execute(id);//执行事务
       n_network_size.fetch_add(transactions[i]->network_size);
       if (result == TransactionResult::ABORT_NORETRY) {
         transactions[i]->abort_no_retry = true;
@@ -175,7 +176,7 @@ public:
 
     // reserve
     count = 0;
-    for (auto i = id; i < transactions.size(); i += context.worker_num) {
+    for (auto i = id; i < transactions.size(); i += context.worker_num) {//别的节点的工作
 
       if (transactions[i]->abort_no_retry) {
         continue;
