@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 9/28/18.
-//
-
 #pragma once
 
 #include <glog/logging.h>

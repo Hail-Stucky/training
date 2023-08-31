@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 7/24/18.
-//
-
 #pragma once
 
 #include "benchmark/tpcc/Context.h"

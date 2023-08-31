@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 9/17/18.
-//
-
 #pragma once
 
 #include "common/Encoder.h"

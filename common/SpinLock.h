@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 7/14/18.
-//
-
 #pragma once
 
 #include <atomic>

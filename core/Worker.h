@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 7/22/18.
-//
-
 #pragma once
 
 #include "common/LockfreeQueue.h"

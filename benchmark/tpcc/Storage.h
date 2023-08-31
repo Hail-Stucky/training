@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 9/12/18.
-//
-
 #pragma once
 
 #include "benchmark/tpcc/Schema.h"

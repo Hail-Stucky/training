@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 9/15/18.
-//
-
 #pragma once
 
 #include <boost/algorithm/string.hpp>

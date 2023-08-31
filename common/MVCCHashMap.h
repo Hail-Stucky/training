@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 2019-09-02.
-//
-
 #pragma once
 
 #include "SpinLock.h"

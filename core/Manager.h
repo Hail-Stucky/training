@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 9/10/18.
-//
-
 #pragma once
 
 #include "core/Context.h"

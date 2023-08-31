@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 8/7/19.
-//
-
 #pragma once
 
 #include <chrono>

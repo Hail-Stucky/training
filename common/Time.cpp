@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 7/22/18.
-//
-
 #include "common/Time.h"
 
 namespace aria {

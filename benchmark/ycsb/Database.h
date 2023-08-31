@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 7/19/18.
-//
-
 #pragma once
 
 #include "benchmark/ycsb/Context.h"

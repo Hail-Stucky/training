@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 7/15/18.
-//
-
 #pragma once
 
 // macros for code generation

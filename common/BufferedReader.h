@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 8/30/18.
-//
-
 #pragma once
 
 #include "common/Message.h"

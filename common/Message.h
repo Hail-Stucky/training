@@ -1,7 +1,3 @@
-//
-// Created by Yi Lu on 8/28/18.
-//
-
 #pragma once
 
 #include "StringPiece.h"
