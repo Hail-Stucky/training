@@ -30,8 +30,8 @@ public:
   }
 
   int n_district = 10;
-  int newOrderCrossPartitionProbability = 10; // out of 100
-  int paymentCrossPartitionProbability = 15;  // out of 100
+  int newOrderCrossPartitionProbability = 10; // 表示新订单跨分区概率，默认为 10%
+  int paymentCrossPartitionProbability = 15;  // 表示付款跨分区概率，默认为 15%
 
   bool write_to_w_ytd = true;
   bool payment_look_up = false;

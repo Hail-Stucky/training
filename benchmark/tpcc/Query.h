@@ -1,4 +1,4 @@
-#pragma once
+  #pragma once
 
 #include "benchmark/tpcc/Context.h"
 #include "benchmark/tpcc/Random.h"

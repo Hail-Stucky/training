@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
   context.payment_look_up = FLAGS_payment_look_up;
 
   aria::tpcc::Database db;
-  db.initialize(context);//生成数据表
+  db.initialize(context);//为db生成哈希表（以KV形式存储查找s数据）
 
   aria::Coordinator c(FLAGS_id, db, context);//开多个线程
   c.connectToPeers();//连接不同的服务器（跨区，tcpip）

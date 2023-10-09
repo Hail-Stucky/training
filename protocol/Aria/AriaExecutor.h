@@ -73,7 +73,8 @@ public:
 
     for (;;) {
 
-      ExecutorStatus status;//1
+      ExecutorStatus status;
+      // 准备工作
       do {
         status = static_cast<ExecutorStatus>(worker_status.load());
 
@@ -84,7 +85,7 @@ public:
       } while (status != ExecutorStatus::Aria_READ);
 
       n_started_workers.fetch_add(1);
-      read_snapshot();//2 准备工作
+      read_snapshot();
       //执行部分
       n_complete_workers.fetch_add(1);
       // wait to Aria_READ
@@ -153,7 +154,7 @@ public:
                               1); // tid starts from 1
       transactions[i]->set_tid_offset(i);
       transactions[i]->execution_phase = false;
-      setupHandlers(*transactions[i]);
+      setupHandlers(*transactions[i]);//对事务进行分析（看数据在不在本地节点,是否涉及远程节点）
 
       count++;
 
@@ -326,7 +327,8 @@ public:
       }
 
       count++;
-
+    //检查自己的自己节点所有的事务冲突
+    //然后返回远程节点的远程请求在本地的冲突情况
       analyze_dependency(*transactions[i]);
       if (count % context.batch_flush == 0) {
         flush_messages();
@@ -357,7 +359,8 @@ public:
         percentile.add(latency);
         continue;
       }
-
+      
+      //本地的事务要求不存在写后写（a在b前），写后读和读后写只能存在一种，满足这两个条件就可以提交
       if (transactions[i]->waw) {
         protocol.abort(*transactions[i], messages);
         n_abort_lock.fetch_add(1);
@@ -411,7 +414,7 @@ public:
     flush_messages();
   }
 
-  void setupHandlers(TransactionType &txn) {
+  void setupHandlers(TransactionType &txn) {//对事务进行分析
 
     txn.readRequestHandler = [this, &txn](AriaRWKey &readKey, std::size_t tid,
                                           uint32_t key_offset) {

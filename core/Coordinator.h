@@ -41,11 +41,11 @@ public:
 
   void start() {
 
-    // init dispatcher vector
+    // 初始化分派器
     iDispatchers.resize(context.io_thread_num);
     oDispatchers.resize(context.io_thread_num);
 
-    // start dispatcher threads
+    // 开始分派线程
 
     std::vector<std::thread> iDispatcherThreads, oDispatcherThreads;
 
